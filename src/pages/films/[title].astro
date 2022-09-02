@@ -1,0 +1,44 @@
+---
+import { API_URL } from "../../const";
+
+interface Film {
+	movie: string;
+	full_line: string;
+	current_wow_in_movie: number;
+}
+
+export async function getStaticPaths() {
+	const response = await fetch(API_URL);
+	const films = await response.json();
+
+	return films.map((film: Film) => (
+		{
+			params: { title: `${film.movie.replaceAll(' ', '-')}-${film.current_wow_in_movie}` },
+			props: { film },
+		}
+	))
+}
+
+const { film } = Astro.props;
+---
+
+<div class="wrapper">
+	<p>{film.movie}</p>
+	<p>{film.year}</p>
+
+	<picture>
+		<img src={film.poster} alt={`${film.movie} poster`} height={300} width="auto" />
+	</picture>
+
+	<audio controls>
+		<source src={film.audio} type="audio/mp3">
+	  Your browser does not support the audio element.
+	  </audio>
+</div>
+
+<style>
+	.wrapper {
+		display: flex;
+		flex-direction: column;
+	}
+</style>

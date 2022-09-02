@@ -1,0 +1,1 @@
+export const API_URL = 'https://owen-wilson-wow-api.herokuapp.com/wows/ordered/21-30';

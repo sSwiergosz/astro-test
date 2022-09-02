@@ -1,0 +1,28 @@
+---
+// Component Imports
+import SocialButtons from '../components/SocialButtons/SocialButtons';
+---
+ 
+<html lang="en">
+ <body>
+   <div>
+     <article>
+       <section>
+         <h1>Post title (static)</h1>
+         <br/>
+         <p>Post sub-title (static)</p>
+       </section>
+       <section >
+           <p>This is the  post content with images that is rendered by the server.</p>
+           <img src="https://source.unsplash.com/user/c_v_r/200x200" />
+           <p>The next section contains the interactive social buttons component which includes its script.</p>
+       </section>
+       <section style={{ height: '1000px', display: 'flex', flexDirection: 'column', justifyContent: 'end' }}>
+           <div>
+           <SocialButtons client:visible></SocialButtons>
+           </div>
+       </section>
+     </article>
+   </div>
+ </body>
+</html>
